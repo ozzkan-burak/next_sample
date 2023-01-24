@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import FooterColum from './FooterColum';
+import Typo from '../Typo';
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer>
+      <FooterColum>
+        <Typo className="footer-header" text="Lorem Ipsum" as="h4" />
+      </FooterColum>
+    </footer>
   )
 }
 

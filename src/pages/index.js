@@ -1,9 +1,9 @@
 import React from "react";
 import { getCustomers, getCustomerById } from "../network/APIs";
+import Layout from "./Layout";
 
 const Home = ({ data, data2 }) => {
-  console.log(data2);
-  return <div>Home</div>;
+  <Layout />
 };
 
 export async function getServerSideProps() {
