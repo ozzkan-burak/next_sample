@@ -1,14 +1,15 @@
 import React from "react";
-import { getCustomers, getCustomerById } from "../network/APIs";
+import { getProducts } from "../network/APIs";
 import Layout from "./Layout";
 
-const Home = ({ data, data2 }) => {
-  <Layout />
+const Home = ({ data }) => {
+  return (
+    <Layout />
+  )
 };
 
 export async function getServerSideProps() {
-  const data = await getCustomers();
-  const data2 = await getCustomerById(1);
-  return { props: { data, data2 } };
+  const data = await getProducts();
+  return { props: { data } };
 }
 export default Home;

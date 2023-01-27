@@ -1,11 +1,11 @@
 import { axiosInstance } from "./index";
 
-const getCustomers = async () => {
+const getProducts = async () => {
   const response = await axiosInstance.get("products").then((res) => res.data);
   return response;
 };
 
-const getCustomerById = async (id) => {
+const getProductsById = async (id) => {
   const response = await axiosInstance
     .get(`products/${id}`)
     .then((res) => res.data);
@@ -34,8 +34,8 @@ const getCategoryProducts = async (category) => {
 };
 
 export {
-  getCustomers,
-  getCustomerById,
+  getProducts,
+  getProductsById,
   productSearch,
   getAllCategories,
   getCategoryProducts,
