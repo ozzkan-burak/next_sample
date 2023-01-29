@@ -5,88 +5,88 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
-const ShopWithCategory = ({ data }) => {
-  const ShopContainer = styled.div`
-    margin-top: 20px;
-    padding: 20px 35px;
-    display: flex;
-    flex-direction: column;
-    background-color: #f5f5f5;
-    height: 100vh;
-    overflow-y: scroll;
-  `;
-  const ShopBreadCrumb = styled.div`
-    padding: 16px 20px;
-    background: #fff;
-  `;
+const ShopContainer = styled.div`
+  margin-top: 20px;
+  padding: 20px 35px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  height: 100vh;
+  overflow-y: scroll;
+`;
+const ShopBreadCrumb = styled.div`
+  padding: 16px 20px;
+  background: #fff;
+`;
 
-  const ShopContent = styled.div`
-    margin-top: 40px;
-    display: flex;
-  `;
+const ShopContent = styled.div`
+  margin-top: 40px;
+  display: flex;
+`;
 
-  const ShopContentFilter = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 25%;
-  `;
+const ShopContentFilter = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 25%;
+`;
 
-  const ShopContentFilters = styled.div`
-    padding: 15px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  `;
+const ShopContentFilters = styled.div`
+  padding: 15px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-  const ShopContentProducts = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 75%;
-  `;
+const ShopContentProducts = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 75%;
+`;
 
-  const ShopContentProductsSorting = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 0 16px;
-    span {
-      padding: 8px;
-      background-color: #fff;
-      :not(:last-child) {
-        margin-right: 10px;
-      }
-    }
-  `;
-  const ShopContentProductsList = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  `;
-
-  const ShopContentProduct = styled.div`
-    flex: 0 0 28%;
-    width: 100%;
+const ShopContentProductsSorting = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 16px;
+  span {
+    padding: 8px;
     background-color: #fff;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      color: black;
-      img {
-        margin-bottom: 15px;
-      }
-      span {
-        padding: 5px 0;
-      }
+    :not(:last-child) {
+      margin-right: 10px;
     }
-  `;
+  }
+`;
+const ShopContentProductsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
 
+const ShopContentProduct = styled.div`
+  flex: 0 0 28%;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    img {
+      margin-bottom: 15px;
+    }
+    span {
+      padding: 5px 0;
+    }
+  }
+`;
+
+const ShopWithCategory = ({ data }) => {
   console.log(data);
   return (
     <>
