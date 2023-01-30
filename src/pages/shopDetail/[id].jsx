@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getProductsById } from "../../network/APIs";
 import Layout from "../Layout";
 import styled from "styled-components";
@@ -50,9 +50,58 @@ const ProductDetail = styled.div`
     font-size: 16px;
   }
 `;
+const ProductDescription = styled.div`
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 30px;
+`;
+
+const ProductDescriptionTitle = styled.div`
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+  margin-bottom: 26px;
+  cursor: pointer;
+  span {
+    padding: 10px 15px;
+    &.active {
+      border: 1px solid #dee2e6;
+      border-bottom: none;
+      background-color: #f5f5f5;
+    }
+  }
+`;
+
+const ProductDescriptionContent = styled.div`
+  h4 {
+    margin-bottom: 16px;
+    color: #3d464d;
+    font-size: 28px;
+  }
+  p {
+    margin-bottom: 16px;
+    color: #6c757d;
+    text-align: left;
+    font-size: 20px;
+  }
+`;
 
 const shopDetail = ({ data }) => {
-  console.log(data);
+  const descriptionOptions = [
+    {
+      title: "Description",
+    },
+    {
+      title: "Information",
+    },
+    {
+      title: "Product Reviews",
+    },
+  ];
+  const [activeTab, setActiveTab] = useState(0);
+  const handleActiveTab = (index) => {
+    setActiveTab(index);
+  };
 
   return (
     <>
@@ -75,13 +124,71 @@ const shopDetail = ({ data }) => {
             <p>{data.description}</p>
           </ProductDetail>
         </ShopDetail>
+        <ProductDescription>
+          <ProductDescriptionTitle>
+            {descriptionOptions.map((item, index) => (
+              <span
+                className={activeTab == index && "active"}
+                onClick={() => handleActiveTab(index)}
+              >
+                {item.title}
+              </span>
+            ))}
+          </ProductDescriptionTitle>
+          <ProductDescriptionContent>
+            {activeTab === 0 && (
+              <>
+                <h4>Product Description</h4>
+                <p>
+                  Eos no lorem eirmod diam diam, eos elitr et gubergren diam
+                  sea. Consetetur vero aliquyam invidunt duo dolores et duo sit.
+                  Vero diam ea vero et dolore rebum, dolor rebum eirmod
+                  consetetur invidunt sed sed et, lorem duo et eos elitr,
+                  sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed
+                  tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing,
+                  eos dolores sit no ut diam consetetur duo justo est, sit
+                  sanctus diam tempor aliquyam eirmod nonumy rebum dolor
+                  accusam, ipsum kasd eos consetetur at sit rebum, diam kasd
+                  invidunt tempor lorem, ipsum lorem elitr sanctus eirmod
+                  takimata dolor ea invidunt.
+                </p>
+                <p>
+                  Dolore magna est eirmod sanctus dolor, amet diam et eirmod et
+                  ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem
+                  tempor. Gubergren amet amet labore sadipscing clita clita diam
+                  clita. Sea amet et sed ipsum lorem elitr et, amet et labore
+                  voluptua sit rebum. Ea erat sed et diam takimata sed justo.
+                  Magna takimata justo et amet magna et.
+                </p>
+              </>
+            )}
+
+            {activeTab === 1 && (
+              <>
+                <h4>Additional Information</h4>
+                <p>
+                  Eos no lorem eirmod diam diam, eos elitr et gubergren diam
+                  sea. Consetetur vero aliquyam invidunt duo dolores et duo sit.
+                  Vero diam ea vero et dolore rebum, dolor rebum eirmod
+                  consetetur invidunt sed sed et, lorem duo et eos elitr,
+                  sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed
+                  tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing,
+                  eos dolores sit no ut diam consetetur duo justo est, sit
+                  sanctus diam tempor aliquyam eirmod nonumy rebum dolor
+                  accusam, ipsum kasd eos consetetur at sit rebum, diam kasd
+                  invidunt tempor lorem, ipsum lorem elitr sanctus eirmod
+                  takimata dolor ea invidunt.
+                </p>
+              </>
+            )}
+          </ProductDescriptionContent>
+        </ProductDescription>
       </ShopContainer>
     </>
   );
 };
 
 export async function getServerSideProps(context) {
-  console.log(context);
   const { params } = context;
   const { id } = params;
   const data = await getProductsById(id);

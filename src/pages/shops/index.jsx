@@ -87,7 +87,6 @@ const ShopContentProduct = styled.div`
 `;
 
 const shop = ({ data }) => {
-  console.log(data);
   return (
     <>
       <Layout />
